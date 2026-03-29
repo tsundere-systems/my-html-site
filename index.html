@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ポケモン情報検索</title>
 <script src="https://cdn.tailwindcss.com"></script>
+
+<title>ポケモン情報検索 PWA</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#060818">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png">
+<script src="https://cdn.tailwindcss.com"></script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
 <script>
@@ -99,33 +108,6 @@ h1 .ver {
   margin-left: 8px;
 }
 
-/* ===== Search section ===== */
-.search-section {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 18px;
-}
-
-.search-controls {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.search-input-group {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  flex: 1;
-  min-width: 250px;
-}
-
 /* ===== Inputs ===== */
 input[type="number"],
 input[type="text"] {
@@ -178,13 +160,6 @@ button:active { transform: translateY(0); }
 
 .btn-danger:hover {
   box-shadow: 0 6px 24px rgba(239,68,68,0.35) !important;
-}
-
-/* ===== Search hint ===== */
-.search-hint {
-  font-size: 0.83rem;
-  color: rgba(255,255,255,0.32);
-  margin-top: 8px;
 }
 
 /* ===== Loading ===== */
@@ -484,8 +459,6 @@ tr:last-child td { border-bottom: none; }
   .pokemon-name-header h2 { font-size: 2rem; }
   .tab-button { padding: 12px 10px; font-size: 0.82rem; }
   .image-frame img { width: 120px; height: 120px; }
-  .search-controls { flex-direction: column; align-items: stretch; }
-  .search-input-group { flex-direction: column; }
   input[type="number"], input[type="text"] { width: 100%; }
 }
 </style>
@@ -494,16 +467,16 @@ tr:last-child td { border-bottom: none; }
   <div class="container">
     <h1>🔍 <span class="accent">ポケモン情報検索</span><span class="ver">v202603291</span></h1>
 
-    <div class="search-section">
-      <div class="search-controls">
-        <div class="search-input-group">
+    <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 mb-[18px]">
+      <div class="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-[10px] mb-[10px]">
+        <div class="flex flex-col sm:flex-row flex-wrap flex-1 min-w-[250px] gap-[10px]">
           <input type="text" id="pokemonName" placeholder="例: ピカチュウ、Pikachu">
           <input type="number" id="pokemonId" min="1" placeholder="例: 25">
         </div>
         <button onclick="searchPokemon()">🔎 検索</button>
         <button onclick="clearAll()" class="btn-danger">🗑️ クリア</button>
       </div>
-      <div class="search-hint">💡 名前の一部でも検索できます（例: ピカ、リザ、chu など）</div>
+      <div class="text-[0.83rem] text-white/30 mt-2">💡 名前の一部でも検索できます（例: ピカ、リザ、chu など）</div>
     </div>
 
     <div id="loadingMessage" class="hidden">
@@ -1689,5 +1662,16 @@ const drawPolygon = (svg, centerX, centerY, radius, sides, fill, stroke, strokeW
   svg.appendChild(polygon);
 };
 </script>
+<script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').then(reg => {
+          console.log('SW registered!', reg);
+        }).catch(err => {
+          console.log('SW registration failed:', err);
+        });
+      });
+    }
+  </script>
 </body>
 </html>

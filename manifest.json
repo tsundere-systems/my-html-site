@@ -1,0 +1,26 @@
+{
+  "name": "ポケモン情報検索",
+  "short_name": "ポケ検索",
+  "description": "PokeAPIを利用した高機能ポケモン図鑑PWA",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#060818",
+  "theme_color": "#060818",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
