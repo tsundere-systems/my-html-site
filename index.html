@@ -2,14 +2,14 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>ポケモン情報検索 PWA</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#060818">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
-<script src="https://cdn.tailwindcss.com"></script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
 <script>
@@ -53,7 +53,10 @@ body {
   min-height: 100vh;
   font-family: 'Outfit', sans-serif;
   color: #e2e8f0;
-  padding: 24px 16px 48px;
+  padding-top: max(24px, env(safe-area-inset-top));
+  padding-bottom: max(48px, env(safe-area-inset-bottom));
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
 }
 
 /* ===== Glass utility ===== */
@@ -458,10 +461,11 @@ tr:last-child td { border-bottom: none; }
   input[type="number"], input[type="text"] { width: 100%; }
 }
 </style>
+<link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <div class="container">
-    <h1>🔍 <span class="accent">ポケモン情報検索</span><span class="ver">v202603291</span></h1>
+    <h1>🔍 <span class="accent">ポケモン情報検索</span><span class="ver">v202604171</span></h1>
     <div style="text-align:center; margin-bottom:16px;">
       <button id="pwa-install-btn" style="display:none; align-items:center; gap:8px; margin:0 auto; padding:10px 22px; background:linear-gradient(135deg,#3b82f6,#6366f1); color:#fff; border:none; border-radius:999px; font-family:'Outfit',sans-serif; font-size:0.9rem; font-weight:600; cursor:pointer; box-shadow:0 4px 18px rgba(99,102,241,0.4); transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
         📲 アプリとしてインストール
@@ -469,13 +473,15 @@ tr:last-child td { border-bottom: none; }
     </div>
 
     <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 mb-[18px]">
-      <div class="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-[10px] mb-[10px]">
-        <div class="flex flex-col sm:flex-row flex-wrap flex-1 min-w-[250px] gap-[10px]">
+      <div class="flex flex-col gap-[10px] mb-[10px]">
+        <div class="flex flex-col sm:flex-row gap-[10px]">
           <input type="text" id="pokemonName" placeholder="例: ピカチュウ、Pikachu">
           <input type="number" id="pokemonId" min="1" placeholder="例: 25">
         </div>
-        <button onclick="searchPokemon()">🔎 検索</button>
-        <button onclick="clearAll()" class="btn-danger">🗑️ クリア</button>
+        <div class="flex gap-[10px] justify-end">
+          <button onclick="searchPokemon()">🔎 検索</button>
+          <button onclick="clearAll()" class="btn-danger">🗑️ クリア</button>
+        </div>
       </div>
       <div class="text-[0.83rem] text-white/30 mt-2">💡 名前の一部でも検索できます（例: ピカ、リザ、chu など）</div>
     </div>

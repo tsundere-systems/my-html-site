@@ -1,0 +1,22 @@
+
+body {
+  background:#060818;
+  color:#e2e8f0;
+  font-family:sans-serif;
+  padding:20px;
+}
+.container {
+  max-width:600px;
+  margin:auto;
+}
+button {
+  padding:10px 20px;
+  background:#3b82f6;
+  color:white;
+  border:none;
+  border-radius:8px;
+}
+input {
+  padding:10px;
+  margin-right:10px;
+}
