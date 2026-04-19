@@ -460,12 +460,219 @@ tr:last-child td { border-bottom: none; }
   .image-frame img { width: 120px; height: 120px; }
   input[type="number"], input[type="text"] { width: 100%; }
 }
+
+/* ===== HOME BOX Grid ===== */
+.home-box-container { margin-top: 4px; }
+
+.home-box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.home-box-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #60a5fa;
+  text-shadow: 0 0 12px rgba(96,165,250,0.4);
+  flex: 1;
+  text-align: center;
+}
+
+.home-box-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.home-box-nav .nav-btn {
+  padding: 6px 14px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: rgba(96,165,250,0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(96,165,250,0.25);
+  border-radius: 8px;
+  min-width: 40px;
+  transition: background 0.15s;
+}
+
+.home-box-nav .nav-btn:hover {
+  background: rgba(96,165,250,0.25);
+  transform: none;
+  box-shadow: none;
+}
+
+.home-box-nav .nav-btn:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+#dexBoxPageInfo {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.45);
+  white-space: nowrap;
+  min-width: 72px;
+  text-align: center;
+}
+
+.dex-box-jump {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.38);
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.dex-box-jump input[type="number"] {
+  width: 58px;
+  padding: 5px 8px;
+  font-size: 0.85rem;
+  text-align: center;
+  min-width: unset;
+  flex: none;
+}
+
+.dex-box-jump .jump-btn {
+  padding: 5px 11px;
+  font-size: 0.8rem;
+  border-radius: 7px;
+  background: rgba(96,165,250,0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(96,165,250,0.2);
+}
+
+.dex-box-jump .jump-btn:hover {
+  background: rgba(96,165,250,0.22);
+  transform: none;
+  box-shadow: none;
+}
+
+.home-box-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  padding: 12px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.home-box-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 3px 5px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+  overflow: hidden;
+  position: relative;
+}
+
+.home-box-cell:hover {
+  background: rgba(96,165,250,0.16);
+  transform: scale(1.07);
+  z-index: 2;
+  box-shadow: 0 4px 16px rgba(96,165,250,0.2);
+}
+
+.home-box-cell:active { transform: scale(0.95); }
+
+.home-box-cell img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.cell-numbers {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  margin-top: 4px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cell-local {
+  font-size: 0.58rem;
+  color: #60a5fa;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.cell-sep {
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.2);
+}
+
+.cell-national {
+  font-size: 0.58rem;
+  color: rgba(255,255,255,0.3);
+  white-space: nowrap;
+}
+
+.cell-name {
+  font-size: 0.64rem;
+  color: rgba(255,255,255,0.78);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding: 0 2px;
+  margin-top: 2px;
+  letter-spacing: -0.01em;
+}
+
+.home-box-empty {
+  background: rgba(255,255,255,0.015) !important;
+  border: 1px dashed rgba(255,255,255,0.05);
+  cursor: default;
+  min-height: 88px;
+}
+
+.home-box-empty:hover {
+  background: rgba(255,255,255,0.015) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.dex-name-link {
+  color: #60a5fa;
+  cursor: pointer;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+  transition: color 0.15s;
+}
+.dex-name-link:hover { color: #93c5fd; }
+
+@media (max-width: 600px) {
+  .home-box-grid { gap: 3px; padding: 8px; }
+  .home-box-cell img { width: 42px; height: 42px; }
+  .home-box-cell { padding: 5px 2px 4px; }
+  .cell-name { font-size: 0.58rem; }
+  .cell-local, .cell-national { font-size: 0.53rem; }
+  .home-box-title { font-size: 0.95rem; }
+}
 </style>
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <div class="container">
-    <h1>🔍 <span class="accent">ポケモン情報検索</span><span class="ver">v202604171</span></h1>
+    <h1>🔍 <span class="accent">ポケモン情報検索</span><span class="ver">v202604191</span></h1>
     <div style="text-align:center; margin-bottom:16px;">
       <button id="pwa-install-btn" style="display:none; align-items:center; gap:8px; margin:0 auto; padding:10px 22px; background:linear-gradient(135deg,#3b82f6,#6366f1); color:#fff; border:none; border-radius:999px; font-family:'Outfit',sans-serif; font-size:0.9rem; font-weight:600; cursor:pointer; box-shadow:0 4px 18px rgba(99,102,241,0.4); transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
         📲 アプリとしてインストール
@@ -524,7 +731,30 @@ tr:last-child td { border-bottom: none; }
         </div>
 
         <div id="dexTab" class="tab-panel">
-          <table id="pokemonDexInfo"></table>
+          <!-- 図鑑一覧テーブル -->
+          <div id="dexTableView">
+            <p style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin:0 0 10px 0;">💡 図鑑名をタップするとHOME風BOX表示に切り替わります</p>
+            <table id="pokemonDexInfo"></table>
+          </div>
+          <!-- HOME BOX ビュー -->
+          <div id="dexBoxView" class="home-box-container hidden">
+            <div class="home-box-header">
+              <button onclick="closeDexBox()" style="padding:6px 12px;font-size:0.8rem;background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.12);border-radius:8px;white-space:nowrap;">← 一覧へ</button>
+              <div class="home-box-title" id="dexBoxTitle">図鑑</div>
+              <div class="home-box-nav">
+                <button id="dexBoxPrev" class="nav-btn" onclick="changeDexBoxPage(-1)">－</button>
+                <span id="dexBoxPageInfo">BOX 1 / 1</span>
+                <button id="dexBoxNext" class="nav-btn" onclick="changeDexBoxPage(1)">＋</button>
+              </div>
+            </div>
+            <div class="dex-box-jump">
+              <span>BOXジャンプ:</span>
+              <input type="number" id="dexBoxJumpInput" min="1" placeholder="No." onkeydown="if(event.key==='Enter')jumpToDexBox()">
+              <button class="jump-btn" onclick="jumpToDexBox()">GO</button>
+              <span id="dexBoxTotal" style="color:rgba(255,255,255,0.25);font-size:0.75rem;"></span>
+            </div>
+            <div id="dexBoxGrid" class="home-box-grid"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -575,10 +805,144 @@ document.addEventListener('DOMContentLoaded', () => {
 
   nameInput.addEventListener('keypress', handleEnter);
   idInput.addEventListener('keypress', handleEnter);
-  
+
+  // URLパラメータ ?pokemon=ID で自動検索 (BOXセルタップで新タブ起動時)
+  const urlParams = new URLSearchParams(window.location.search);
+  const pokemonParam = urlParams.get('pokemon');
+  if (pokemonParam) {
+    fetchPokemonDetails(pokemonParam);
+  }
+
   // 初期表示
   //fetchPokemonDetails('25'); // ピカチュウ
 });
+
+// =========================================================================
+// HOME BOX 図鑑ビュー
+// =========================================================================
+
+let dexBoxData = null;
+let dexBoxPage = 0;
+const DEX_PAGE_SIZE = 30;
+const dexBoxNameCache = {}; // nationalId -> 日本語名
+
+const openDexBox = async (apiName, jaName) => {
+  // パネル切り替え
+  document.getElementById('dexTableView').classList.add('hidden');
+  const boxView = document.getElementById('dexBoxView');
+  boxView.classList.remove('hidden');
+  document.getElementById('dexBoxTitle').textContent = jaName;
+  document.getElementById('dexBoxGrid').innerHTML =
+    '<div style="grid-column:1/-1;padding:32px;text-align:center;color:rgba(255,255,255,0.4);">読み込み中…</div>';
+
+  try {
+    const res = await fetch(`https://pokeapi.co/api/v2/pokedex/${apiName}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const entries = [...data.pokemon_entries].sort((a, b) => a.entry_number - b.entry_number);
+
+    dexBoxData = { apiName, jaName, entries };
+    dexBoxPage = 0;
+
+    const totalPages = Math.ceil(entries.length / DEX_PAGE_SIZE);
+    document.getElementById('dexBoxJumpInput').max = totalPages;
+    document.getElementById('dexBoxTotal').textContent = `全${entries.length}匹 / ${totalPages}BOX`;
+
+    await renderDexBoxPage();
+  } catch (e) {
+    document.getElementById('dexBoxGrid').innerHTML =
+      '<div class="error-message" style="grid-column:1/-1;">データの取得に失敗しました。<br>PokeAPIにアクセスできない可能性があります。</div>';
+  }
+};
+
+const renderDexBoxPage = async () => {
+  if (!dexBoxData) return;
+  const { entries, jaName } = dexBoxData;
+  const totalPages = Math.ceil(entries.length / DEX_PAGE_SIZE);
+  const start = dexBoxPage * DEX_PAGE_SIZE;
+  const pageEntries = entries.slice(start, start + DEX_PAGE_SIZE);
+
+  // ナビ更新
+  document.getElementById('dexBoxPageInfo').textContent = `BOX ${dexBoxPage + 1} / ${totalPages}`;
+  document.getElementById('dexBoxPrev').disabled = dexBoxPage === 0;
+  document.getElementById('dexBoxNext').disabled = dexBoxPage >= totalPages - 1;
+
+  // ローディング表示
+  const grid = document.getElementById('dexBoxGrid');
+  grid.innerHTML = '<div style="grid-column:1/-1;padding:20px;text-align:center;color:rgba(255,255,255,0.35);">読み込み中…</div>';
+
+  // 各エントリから全国図鑑IDを抽出
+  const pageData = pageEntries.map(entry => {
+    const parts = entry.pokemon_species.url.split('/').filter(x => x);
+    const nationalId = parseInt(parts[parts.length - 1]);
+    return { entry_number: entry.entry_number, nationalId, slug: entry.pokemon_species.name };
+  });
+
+  // 日本語名を並列取得（未キャッシュ分のみ）
+  const uncached = pageData.filter(p => !dexBoxNameCache[p.nationalId]);
+  await Promise.all(uncached.map(async ({ nationalId, slug }) => {
+    try {
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${nationalId}`);
+      if (!res.ok) throw new Error();
+      const d = await res.json();
+      dexBoxNameCache[nationalId] = d.names.find(n => n.language.name === 'ja')?.name || slug;
+    } catch {
+      dexBoxNameCache[nationalId] = slug;
+    }
+  }));
+
+  // セル生成（常に30個）
+  const cells = [];
+  for (let i = 0; i < DEX_PAGE_SIZE; i++) {
+    const p = pageData[i];
+    if (p) {
+      const sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.nationalId}.png`;
+      const localNo = p.entry_number.toString().padStart(3, '0');
+      const nationalNo = '#' + p.nationalId.toString().padStart(4, '0');
+      const name = dexBoxNameCache[p.nationalId] || p.slug;
+      const openUrl = location.pathname + '?pokemon=' + p.nationalId;
+      cells.push(`<div class="home-box-cell" onclick="window.open('${openUrl}','_blank')" title="${name} / No.${localNo} / ${nationalNo}">
+        <img src="${sprite}" alt="${name}" loading="lazy" onerror="this.style.opacity='0.15'">
+        <div class="cell-numbers">
+          <span class="cell-local">No.${localNo}</span>
+          <span class="cell-sep">|</span>
+          <span class="cell-national">${nationalNo}</span>
+        </div>
+        <div class="cell-name">${name}</div>
+      </div>`);
+    } else {
+      cells.push('<div class="home-box-cell home-box-empty"></div>');
+    }
+  }
+  grid.innerHTML = cells.join('');
+};
+
+const changeDexBoxPage = (delta) => {
+  if (!dexBoxData) return;
+  const totalPages = Math.ceil(dexBoxData.entries.length / DEX_PAGE_SIZE);
+  const newPage = dexBoxPage + delta;
+  if (newPage >= 0 && newPage < totalPages) {
+    dexBoxPage = newPage;
+    renderDexBoxPage();
+  }
+};
+
+const jumpToDexBox = () => {
+  if (!dexBoxData) return;
+  const input = document.getElementById('dexBoxJumpInput');
+  const page = parseInt(input.value) - 1;
+  const totalPages = Math.ceil(dexBoxData.entries.length / DEX_PAGE_SIZE);
+  if (!isNaN(page) && page >= 0 && page < totalPages) {
+    dexBoxPage = page;
+    input.value = '';
+    renderDexBoxPage();
+  }
+};
+
+const closeDexBox = () => {
+  document.getElementById('dexBoxView').classList.add('hidden');
+  document.getElementById('dexTableView').classList.remove('hidden');
+};
 
 const generationTranslations = {
   "generation-i": "第1世代", "generation-ii": "第2世代", "generation-iii": "第3世代",
@@ -1479,7 +1843,9 @@ const createInfoTable = (speciesData, pokemonData, japaneseName, imageUrl, shiny
     const formattedNumber = entry.pokedex.name === "national" ? entry.entry_number.toString().padStart(4, '0') : entry.entry_number.toString().padStart(3, '0');
     const url = entry.pokedex.name === "national" ? `https://zukan.pokemon.co.jp/detail/${entry.entry_number}` : '#';
     const td1 = document.createElement('td');
-    td1.textContent = pokedexName;
+    // 図鑑名クリックでBOX表示
+    td1.innerHTML = `<span class="dex-name-link">${pokedexName}</span>`;
+    td1.querySelector('span').onclick = () => openDexBox(entry.pokedex.name, pokedexName);
     const td2 = document.createElement('td');
     td2.className = 'pokemon-dex-number';
     if (entry.pokedex.name === "national") {
