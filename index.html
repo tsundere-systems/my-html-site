@@ -559,7 +559,7 @@ tr:last-child td { border-bottom: none; }
 
 .home-box-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 5px;
   padding: 12px;
   background: rgba(0,0,0,0.25);
@@ -672,7 +672,7 @@ tr:last-child td { border-bottom: none; }
 </head>
 <body>
   <div class="container">
-    <h1>🔍 <span class="accent">ポケモン情報検索</span><span class="ver">v202604191</span></h1>
+    <h1>🔍 <span class="accent">ポケモン情報検索</span><span class="ver">v202605041</span></h1>
     <div style="text-align:center; margin-bottom:16px;">
       <button id="pwa-install-btn" style="display:none; align-items:center; gap:8px; margin:0 auto; padding:10px 22px; background:linear-gradient(135deg,#3b82f6,#6366f1); color:#fff; border:none; border-radius:999px; font-family:'Outfit',sans-serif; font-size:0.9rem; font-weight:600; cursor:pointer; box-shadow:0 4px 18px rgba(99,102,241,0.4); transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
         📲 アプリとしてインストール
@@ -1503,7 +1503,7 @@ const fetchPokemonDetails = async (pokemonId) => {
 
     document.getElementById('pokemonNameHeader').classList.remove('hidden');
     document.getElementById('pokemonTabs').classList.remove('hidden');
-    switchTab('basic');
+    switchTab('dex');
   } catch (error) {
     console.error(error);
     clearAll();
@@ -1859,6 +1859,11 @@ const createInfoTable = (speciesData, pokemonData, japaneseName, imageUrl, shiny
   });
   document.getElementById('pokemonDexInfo').innerHTML = '';
   document.getElementById('pokemonDexInfo').appendChild(dexTableBody);
+  // 再検索時にBOXビューが残らないようリセット
+  document.getElementById('dexBoxView').classList.add('hidden');
+  document.getElementById('dexTableView').classList.remove('hidden');
+  dexBoxData = null;
+  dexBoxPage = 0;
 };
 
 const createStatsRadarChart = (stats) => {
